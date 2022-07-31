@@ -7,7 +7,9 @@
 
 ## Fonts
 
-+ SF Pro Display
++ ttf-sarasa-gothic
++ otf-font-awesome
++ ttf-material-design-icons-git
 
 ## Patches
 
