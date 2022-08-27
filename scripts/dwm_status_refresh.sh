@@ -8,6 +8,7 @@ function get_bytes {
 	# Find active network interface
 	interface=$(ip route get 8.8.8.8 2>/dev/null| awk '{print $5}')
 	line=$(grep $interface /proc/net/dev | cut -d ':' -f 2 | awk '{print "received_bytes="$1, "transmitted_bytes="$9}')
+	# line=$(grep utun /proc/net/dev | cut -d ':' -f 2 | awk '{print "received_bytes="$1, "transmitted_bytes="$9}')
 	eval $line
 	now=$(date +%s%N)
 }
@@ -126,20 +127,20 @@ show_record(){
 	echo " $size $(basename $rp)"
 }
 
-# get_bytes
+get_bytes
 
 # Calculates speeds
-# vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
-# vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
+vel_recv=$(get_velocity $received_bytes $old_received_bytes $now)
+vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 #⬇️⬆️ 
 # xsetroot -name " 💿 $(print_mem)M ⬇ $vel_recv ⬆ $vel_trans $(dwm_alsa) $(dwm_backlight) [ $(print_bat) ]$(show_record) $(print_date) "
-# xsetroot -name " 💿 $(print_mem)M ⬇ $vel_recv ⬆ $vel_trans  [ $(print_bat) ] $(show_record) $(print_date) "
+xsetroot -name " 💿 $(print_mem)M ⬇ $vel_recv ⬆ $vel_trans  [ $(print_bat) ] $(show_record) $(print_date) "
 
-xsetroot -name " 💿 $(print_mem)M [ $(print_bat) ] $(show_record) $(print_date) "
+# xsetroot -name " 💿 $(print_mem)M [ $(print_bat) ] $(show_record) $(print_date) "
 
 # Update old values to perform new calculations
-# old_received_bytes=$received_bytes
-# old_transmitted_bytes=$transmitted_bytes
-# old_time=$now
+old_received_bytes=$received_bytes
+old_transmitted_bytes=$transmitted_bytes
+old_time=$now
 
 exit 0

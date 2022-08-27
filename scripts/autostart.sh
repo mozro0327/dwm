@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xrandr --auto --output eDP-1 --right-of HDMI-1 --size 1920x1080
+xrandr --auto --output eDP-1 --below HDMI-1 --size 1920x1080
 # xrandr --auto --output eDP-1 --same-as HDMI-1 --size 1920x1080
 /bin/bash $HOME/.dwm/dwm_status.sh &
 /bin/bash $HOME/.dwm/wp-autochange.sh &
@@ -10,10 +10,9 @@ picom --experimental-backend &
 # aria2c --enable-rpc &
 udiskie &
 greenclip daemon &
-# clash &
-cfw &
+clash &
 # libinput-gestures &
-# nm-applet &
+nm-applet &
 fcitx5 -d &
 blueman-applet &
 # redshift &
