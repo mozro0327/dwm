@@ -25,18 +25,18 @@ static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#ffffff";
 static const char col_cyan[] = "#555555";
 static const char col_border[] = "#42A5F5";
-static const unsigned int baralpha = 0xd0;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int baralpha = 0xc0;
+static const unsigned int borderalpha = 0xdd;
 static const char *colors[][3] = {
-    /*             fg           bg          border   */
-    [SchemeNorm] = {col_gray3,  col_gray1,  col_gray2},
-    [SchemeSel]  = {col_gray4,  col_cyan,   col_border},
-    [SchemeHid]  = {col_cyan,   col_gray1,  col_border},
+    /*              fg          bg         border     */
+    [SchemeNorm] = { col_gray3, col_gray1, col_gray2  },
+    [SchemeSel]  = { col_gray4, col_cyan,  col_border },
+    [SchemeHid]  = { "#dddddd", NULL,      NULL       }
 };
 static const unsigned int alphas[][3] = {
-    /*             fg       bg        border     */
-    [SchemeNorm] = {OPAQUE, baralpha, borderalpha},
-    [SchemeSel]  = {OPAQUE, baralpha, borderalpha},
+    /*               fg      bg        border     */
+    [SchemeNorm] = { OPAQUE, baralpha, borderalpha},
+    [SchemeSel]  = { OPAQUE, baralpha, borderalpha},
 };
 
 /* tagging */
@@ -48,15 +48,15 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class    instance    title       tags mask     isfloating    monitor */
-    {"Gimp",    NULL,       NULL,       0,            1,            -1},
-    {"Firefox", NULL,       NULL,       1 << 8,       0,            -1},
-    {"weixin",  "weixin",   "weixin",   1 << 9,       0,            -1},
+    {  "Gimp",    NULL,       NULL,       0,            1,            -1    },
+    {  "Firefox", NULL,       NULL,       1 << 8,       0,            -1    },
+    {  "weixin",  "weixin",   "weixin",   1 << 9,       0,            -1    },
 };
 
 /* layout(s) */
 static const float mfact      = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster      = 1;   /* number of clients in master area */
-static const int resizehints  = 0; /* 1 means respect size hints in tiled resizals */
+static const int resizehints  = 0;   /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
     /* symbol   arrange function */
