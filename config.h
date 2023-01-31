@@ -76,7 +76,7 @@ static const Layout layouts[] = {
 static char dmenumon[2]            = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]      = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1,"-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL};
 static const char *termcmd[]       = {"alacritty", "-e", "fish"};
-static const char *browsercmd[]    = {"microsoft-edge-stable", NULL};
+static const char *browsercmd[]    = {"google-chrome-stable", NULL};
 static const char *filecmd[]       = {"nautilus", NULL};
 static const char *editercmd[]     = {"typora", NULL};
 static const char *screenshot[]    = {"/home/cheukwing/.dwm/flameshot.sh", NULL};
@@ -95,6 +95,7 @@ static const char *scratchpadcmd[] = {"st", "-t", scratchpadname, "-g", "80x24",
 static const char *extendcmd[]	   = {"/home/cheukwing/.dwm/extended.sh", NULL};
 static const char *disextendcmd[]  = {"/home/cheukwing/.dwm/disextended.sh", NULL};
 static const char *sameascmd[]     = {"/home/cheukwing/.dwm/sameas.sh", NULL};
+static const char *swapcapsesc[]  = {"/home/cheukwing/.dwm/xmodmap-swap.sh", NULL};
 
 static Key keys[] = {
     /* modifier             key                       function              argument */
@@ -116,7 +117,8 @@ static Key keys[] = {
     {MODKEY,                XK_minus,                 spawn,                {.v = disextendcmd}},
     {MODKEY,                XK_plus,                  spawn,                {.v = extendcmd}},
     {MODKEY,                XK_equal,                 spawn,                {.v = sameascmd}},
-    {MODKEY | ShiftMask,    XK_j,                     rotatestack,          {.i = +1}}, 
+    {MODKEY | ShiftMask,    XK_backslash,             spawn,                {.v = swapcapsesc}},
+    {MODKEY | ShiftMask,    XK_j,                     rotatestack,          {.i = +1}},
     {MODKEY | ShiftMask,    XK_k,                     rotatestack,          {.i = -1}},
     {MODKEY,                XK_j,                     focusstack,           {.i = +1}},
     {MODKEY,                XK_k,                     focusstack,           {.i = -1}},
